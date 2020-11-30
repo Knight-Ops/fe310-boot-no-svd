@@ -67,3 +67,10 @@ objdump:
 
 nm:
 	cargo nm --target $(TARGET) -- riscv-rtos | sort
+
+server_riscv:
+	"C:\Program Files (x86)\SEGGER\JLink\JLinkGDBServer.exe" -device FE310 -if JTAG -speed 4000 -port 3333 -nolocalhostonly
+
+program_riscv:
+	cp $(CARGO_OUTPUT) ./bootloader
+	~/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14/bin/riscv64-unknown-elf-gdb -x gdb_init

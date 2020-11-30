@@ -81,5 +81,11 @@ pub fn init() {
 
     uart_0.init(&mut gpio, &clint, 115200);
 
-    write!(uart_0, "Testing format string {}", "RISCV-32 Board");
+    loop {
+        uart_0.write_char('T');
+        uart_0.write_char('e');
+        uart_0.write_char('s');
+        uart_0.write_char('t');
+        uart_0.write_char('\n');
+    }
 }
